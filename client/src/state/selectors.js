@@ -1,0 +1,1 @@
+export const globalModeSelector = (state) => state.global.mode

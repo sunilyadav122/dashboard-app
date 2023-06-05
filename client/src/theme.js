@@ -1,5 +1,5 @@
 // color design tokens export
-export const tokensDark = {
+export const tokensDarkObj = {
   grey: {
     0: "#ffffff", // manually adjusted
     10: "#f6f6f6", // manually adjusted
@@ -43,11 +43,11 @@ export const tokensDark = {
 };
 
 // function that reverses the color palette
-function reverseTokens(tokensDark) {
+function reverseTokens(tokensDarkObj) {
   const reversedTokens = {};
-  Object.entries(tokensDark).forEach(([key, val]) => {
-    const keys = Object.keys(val);
-    const values = Object.values(val);
+  Object.entries(tokensDarkObj).forEach(([key, val]) => { // [[gery,{}],[primary,{}]]
+    const keys = Object.keys(val); // ["0","10","50"]
+    const values = Object.values(val);//["#25325","#23534","#34656"]
     const length = keys.length;
     const reversedObj = {};
     for (let i = 0; i < length; i++) {
@@ -57,7 +57,8 @@ function reverseTokens(tokensDark) {
   });
   return reversedTokens;
 }
-export const tokensLight = reverseTokens(tokensDark);
+
+export const tokensLightObj = reverseTokens(tokensDarkObj);
 
 // mui theme settings
 export const themeSettings = (mode) => {
@@ -68,42 +69,42 @@ export const themeSettings = (mode) => {
         ? {
             // palette values for dark mode
             primary: {
-              ...tokensDark.primary,
-              main: tokensDark.primary[400],
-              light: tokensDark.primary[400],
+              ...tokensDarkObj.primary,
+              main: tokensDarkObj.primary[400],
+              light: tokensDarkObj.primary[400],
             },
             secondary: {
-              ...tokensDark.secondary,
-              main: tokensDark.secondary[300],
+              ...tokensDarkObj.secondary,
+              main: tokensDarkObj.secondary[300],
             },
             neutral: {
-              ...tokensDark.grey,
-              main: tokensDark.grey[500],
+              ...tokensDarkObj.grey,
+              main: tokensDarkObj.grey[500],
             },
             background: {
-              default: tokensDark.primary[600],
-              alt: tokensDark.primary[500],
+              default: tokensDarkObj.primary[600],
+              alt: tokensDarkObj.primary[500],
             },
           }
         : {
             // palette values for light mode
             primary: {
-              ...tokensLight.primary,
-              main: tokensDark.grey[50],
-              light: tokensDark.grey[100],
+              ...tokensLightObj.primary,
+              main: tokensDarkObj.grey[50],
+              light: tokensDarkObj.grey[100],
             },
             secondary: {
-              ...tokensLight.secondary,
-              main: tokensDark.secondary[600],
-              light: tokensDark.secondary[700],
+              ...tokensLightObj.secondary,
+              main: tokensDarkObj.secondary[600],
+              light: tokensDarkObj.secondary[700],
             },
             neutral: {
-              ...tokensLight.grey,
-              main: tokensDark.grey[500],
+              ...tokensLightObj.grey,
+              main: tokensDarkObj.grey[500],
             },
             background: {
-              default: tokensDark.grey[0],
-              alt: tokensDark.grey[50],
+              default: tokensDarkObj.grey[0],
+              alt: tokensDarkObj.grey[50],
             },
           }),
     },
