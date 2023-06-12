@@ -7,6 +7,7 @@ import { globalModeSelector } from "state/selectors";
 import { themeSettings } from "theme";
 import Layout from "scenes/Layout"
 import Dashboard from "scenes/Dashboard"
+import Products from "scenes/Products"
 
 function App() {
   const mode = useSelector(globalModeSelector);
@@ -22,6 +23,7 @@ function App() {
               {/* CHILDREN */}
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard/>} />
+              <Route path="/products" element={<Products/>} />
             </Route>
           </Routes>
         </ThemeProvider>
