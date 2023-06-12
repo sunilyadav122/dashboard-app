@@ -10,6 +10,11 @@ import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 import connectDB from "./database/db.js";
 
+import {dataUser,dataProduct,dataProductStat} from "./data/index.js"
+import User from "./models/User.js";
+import Product from "./models/Products.js"
+import ProductStats from "./models/ProductStat.js"
+
 /* CONFIGURATION */
 dotenv.config();
 const app = express();
@@ -35,8 +40,11 @@ const createServer = async () => {
     app.listen(PORT, () => {
       console.log(`SERVER CREATED AT ${PORT}`);
     });
+    // await User.insertMany(dataUser)
+    // await Product.insertMany(dataProduct)
+    // await ProductStats.insertMany(dataProductStat)
   } catch (err) {
-    console.log(err);
+    console.log('Here :- ' ,err);
   }
 };
 
