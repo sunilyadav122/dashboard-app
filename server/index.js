@@ -10,10 +10,13 @@ import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 import connectDB from "./database/db.js";
 
-import {dataUser,dataProduct,dataProductStat} from "./data/index.js"
+
+import {dataUser,dataProduct,dataProductStat,dataTransaction,dataOverallStat} from "./data/index.js"
 import User from "./models/User.js";
 import Product from "./models/Products.js"
 import ProductStats from "./models/ProductStat.js"
+import Transactions from "./models/Transactions.js";
+import OverallStats from "./models/OverallStat.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -43,6 +46,8 @@ const createServer = async () => {
     // await User.insertMany(dataUser)
     // await Product.insertMany(dataProduct)
     // await ProductStats.insertMany(dataProductStat)
+    // await Transactions.insertMany(dataTransaction)
+    // await OverallStats.insertMany(dataOverallStat)
   } catch (err) {
     console.log('Here :- ' ,err);
   }
