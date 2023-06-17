@@ -9,7 +9,6 @@ import {
   Typography,
   Rating,
   useTheme,
-  useMediaQuery,
   Grid,
   CircularProgress,
 } from "@mui/material";
@@ -51,8 +50,8 @@ const Product = ({
           ${Number(price).toFixed(2)}
         </Typography>
         <Rating value={rating} readOnly />
-        <Typography variant="body2">{description}</Typography>
-        <CardActions>
+        <Typography variant="body2" nowrap >{description}</Typography>
+        <CardActions> 
           <Button
             variant="primary"
             size="small"
@@ -87,13 +86,12 @@ const Product = ({
 
 function Products() {
   const { data, isLoading } = useGetProductsQuery();
-  const isNonMobileDevice = useMediaQuery("min-width:1000px");
-  console.log("Data :- ", data?.productsWithStats);
+
   return (
-    <Box m="1.5rem 2rem">
+    <Box m="1.5rem 1rem">
       <Header title="Products" subtitle="See your list of products" />
       {data?.productsWithStats || !isLoading ? (
-        <Box>
+        <Box  mt="1.3rem">
           <Grid container spacing={2}>
             {data?.productsWithStats.map((prod) => (
               <Grid item xs={12} sm={6} md={3} key={prod._id}>
